@@ -6,6 +6,7 @@ import {
 } from "./ui-components";
 import { useState } from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import { DataStore } from "aws-amplify";
 
 function App({ signOut }) {
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -18,7 +19,12 @@ function App({ signOut }) {
         marginBottom="20px"
         overrides={{
           Button31632483: { onClick: () => setShowCreateModal(true) },
-          Button31632487: { onClick: () => signOut() },
+          Button31632487: {
+            onClick: async () => {
+              signOut();
+              await DataStore.clear();
+            },
+          },
         }}
       />
       <div className="container">
