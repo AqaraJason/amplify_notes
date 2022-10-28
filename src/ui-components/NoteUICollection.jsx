@@ -26,6 +26,7 @@ export default function NoteUICollection(props) {
       isSearchable={true}
       isPaginated={true}
       searchPlaceholder="Search..."
+      itemsPerPage={9}
       templateColumns="1fr 1fr 1fr"
       autoFlow="row"
       alignItems="stretch"
